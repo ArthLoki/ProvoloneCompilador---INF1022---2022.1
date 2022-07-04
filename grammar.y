@@ -5,7 +5,7 @@
 
 int yylex();
 void yyerror(const char *s){
-    fprintf(STDERR, "%s\n", s);
+    fprintf(stderr, "%s\n", s);
 };
 
 %}
