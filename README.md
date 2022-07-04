@@ -1,1 +1,1 @@
-# ProvoloneCompilador (INF1022) - 2022.1 PUC-Rio
+# Provolone Compilador - INF1022) - PUC-Rio 2022.1
