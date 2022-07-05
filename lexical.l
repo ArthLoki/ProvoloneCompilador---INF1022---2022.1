@@ -14,6 +14,7 @@ Program 	return (PROGRAM);
 "("			return (AP);
 ")"			return (FP);
 "=="		return (EQUALS);
+"!="		return (DIF);
 "+"			return (PLUS);
 "-"			return (MINUS);
 "*"			return (MULT);

@@ -66,7 +66,17 @@ extern int yydebug;
     FIM = 272,
     ASSIGN = 273,
     AP = 274,
-    FP = 275
+    FP = 275,
+    EQUALS = 276,
+    DIF = 277,
+    PLUS = 278,
+    MINUS = 279,
+    MULT = 280,
+    DIVIDE = 281,
+    GREATER = 282,
+    GREATEROREQUAL = 283,
+    LESSER = 284,
+    LESSEROREQUAL = 285
   };
 #endif
 /* Tokens.  */
@@ -88,6 +98,16 @@ extern int yydebug;
 #define ASSIGN 273
 #define AP 274
 #define FP 275
+#define EQUALS 276
+#define DIF 277
+#define PLUS 278
+#define MINUS 279
+#define MULT 280
+#define DIVIDE 281
+#define GREATER 282
+#define GREATEROREQUAL 283
+#define LESSER 284
+#define LESSEROREQUAL 285
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -98,7 +118,7 @@ union YYSTYPE
     char *str;
     int number;
 
-#line 102 "y.tab.h"
+#line 122 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

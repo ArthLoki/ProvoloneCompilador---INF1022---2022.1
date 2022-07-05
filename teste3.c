@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-             int provolone2c(int X, int Y, int Z) {
+              int provolone2c(int X, int Y, int Z) {
 
-	if (		X = Y;
-) {
+	if (	X > Y) {
 		X++;
+ 	Y = 0;
 	}
 	else{
 		Z++;
