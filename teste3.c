@@ -3,7 +3,8 @@
 
              int provolone2c(int X, int Y, int Z) {
 
-	if (X) {
+	if (		X = Y;
+) {
 		X++;
 	}
 	else{

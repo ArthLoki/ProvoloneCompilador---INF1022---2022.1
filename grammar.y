@@ -40,6 +40,15 @@ void generateProvolone2c(char *params, char *var1, char *var2){
 %token<number> ASSIGN;
 %token<number> AP;
 %token<number> FP;
+%token<number> EQUALS;
+%token<number> PLUS;
+%token<number> MINUS;
+%token<number> MULT;
+%token<number> DIVIDE;
+%token<number> GREATER;
+%token<number> GREATEROREQUAL;
+%token<number> LESSER;
+%token<number> LESSEROREQUAL;
 
 %start program
 
@@ -63,9 +72,18 @@ cmd     : ENQUANTO ID FACA cmds FIM                             {char *repIndet=
         | ID ASSIGN ID                                          {char *assign=malloc(strlen($1) + strlen($3) + 6); sprintf(assign, "\t%s = %s;\n",$1,$3); $$ = assign;}
         | INC AP ID FP                                          {char *increment=malloc(strlen($3) + 5); sprintf(increment, "%s++;\n",$3); $$ = increment;}
         | ZERA AP ID FP                                         {char *zerar=malloc(strlen($3) + 7); sprintf(zerar, "%s = 0;\n",$3); $$ = zerar;}
-        | SE ID ENTAO cmds FIM                                {char *condition1=malloc(strlen($2) + strlen($4) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", $2, $4); $$ = condition1;}
-        | SE ID ENTAO cmds SENAO cmds FIM                     {char *condition2=malloc(strlen($2) + strlen($4) + strlen($6) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", $2, $4, $6); $$ = condition2;}
+        | SE cmds ENTAO cmds FIM                                {char *condition1=malloc(strlen($2) + strlen($4) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", $2, $4); $$ = condition1;}
+        | SE cmds ENTAO cmds SENAO cmds FIM                     {char *condition2=malloc(strlen($2) + strlen($4) + strlen($6) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", $2, $4, $6); $$ = condition2;}
         | FACA ID VEZES cmds FIM                                {char *repDet=malloc(strlen($2) + strlen($4) + 30); sprintf(repDet, "for (int i=0; i<%s; i++) {\n\t%s\t}\n", $2, $4); $$ = repDet;}
+        | ID EQUALS ID
+        | ID PLUS ID
+        | ID MINUS ID
+        | ID MULT ID
+        | ID DIVIDE ID
+        | ID GREATER ID
+        | ID GREATEROREQUAL ID
+        | ID LESSER ID
+        | ID LESSEROREQUAL ID
         ;
 
 %%

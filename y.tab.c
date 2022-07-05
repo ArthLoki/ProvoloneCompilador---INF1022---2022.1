@@ -586,7 +586,7 @@ static const yytype_int16 yytoknum[] =
 };
 # endif
 
-#define YYPACT_NINF (-18)
+#define YYPACT_NINF (-16)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -600,11 +600,11 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -3,     1,     5,     1,     0,   -18,   -18,     4,   -18,     6,
-     -10,     9,    10,     2,     3,    17,    18,     6,    21,    16,
-      11,    25,    26,    19,    22,   -18,   -18,     6,     6,    12,
-      14,     6,   -18,    20,    23,   -18,   -18,   -14,   -18,   -18,
-       6,   -18,    24,   -18
+      -1,     3,    14,     3,     9,   -16,   -16,    15,   -16,    -2,
+       1,    17,    18,     4,     5,    -2,    10,    -2,    19,    16,
+      11,    25,    26,    20,    22,   -16,   -16,    -2,    -2,    12,
+      13,    -2,   -16,    21,    23,   -16,   -16,   -12,   -16,   -16,
+      -2,   -16,    24,   -16
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -622,7 +622,7 @@ static const yytype_int8 yydefact[] =
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -18,   -18,    28,   -18,   -17,   -18
+     -16,   -16,    28,   -16,   -15,   -16
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -636,19 +636,19 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      25,    40,     1,    41,     3,     5,     7,     8,    18,    10,
-      33,    34,    19,    20,    37,    11,    12,    13,    14,    15,
-      23,    21,    22,    42,    26,    24,    27,    28,    29,    30,
-      32,     6,    35,    31,    36,     0,     0,    38,     0,     0,
+      23,    10,    25,    40,     1,    41,     3,    11,    12,    13,
+      14,    15,    33,    34,     5,     7,    37,    24,     8,    18,
+      19,    20,    26,    21,    22,    42,    27,    28,    29,    30,
+      32,     6,    35,    36,    31,     0,     0,     0,    38,     0,
       39,    43
 };
 
 static const yytype_int8 yycheck[] =
 {
-      17,    15,     5,    17,     3,     0,     6,     3,    18,     3,
-      27,    28,     3,     3,    31,     9,    10,    11,    12,    13,
-       3,    19,    19,    40,     3,     7,    10,    16,     3,     3,
-       8,     3,    20,    14,    20,    -1,    -1,    17,    -1,    -1,
+      15,     3,    17,    15,     5,    17,     3,     9,    10,    11,
+      12,    13,    27,    28,     0,     6,    31,     7,     3,    18,
+       3,     3,     3,    19,    19,    40,    10,    16,     3,     3,
+       8,     3,    20,    20,    14,    -1,    -1,    -1,    17,    -1,
       17,    17
 };
 
@@ -658,7 +658,7 @@ static const yytype_int8 yystos[] =
 {
        0,     5,    22,     3,    23,     0,    23,     6,     3,    24,
        3,     9,    10,    11,    12,    13,    25,    26,    18,     3,
-       3,    19,    19,     3,     7,    25,     3,    10,    16,     3,
+       3,    19,    19,    25,     7,    25,     3,    10,    16,     3,
        3,    14,     8,    25,    25,    20,    20,    25,    17,    17,
       15,    17,    25,    17
 };
@@ -1431,13 +1431,13 @@ yyreduce:
 
   case 12:
 #line 66 "grammar.y"
-                                                              {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
+                                                                {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
 #line 1436 "y.tab.c"
     break;
 
   case 13:
 #line 67 "grammar.y"
-                                                              {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
+                                                                {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
 #line 1442 "y.tab.c"
     break;
 
