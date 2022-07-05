@@ -45,7 +45,7 @@ void generateProvolone2c(char *params, char *var1, char *var2){
 
 %%
 
-program : ENTRADA varlist SAIDA ret cmds FIM NEWLINE            {printf("int provolone2c(%s) {\n\n%s\n%s\n}", $2, $5, $4);}
+program : ENTRADA varlist SAIDA ret cmds END NEWLINE            {printf("int provolone2c(%s) {\n\n%s\n%s\n", $2, $5, $4);}
         ;
 
 varlist : ID varlist                                            {char *p1=malloc(strlen($1) + strlen($2) + 7); sprintf(p1, "%s, int %s", $1, $2); $$ = p1; qtdParametros++;}
@@ -72,10 +72,8 @@ cmd     : ENQUANTO ID FACA cmds FIM                             {char *repIndet=
 
 int main(){
     printf("#include <stdio.h>\n#include <stdlib.h>\n\n");
-
     yyparse();
-
-	printf("int main(int argc, char *argv[]) {");
+    printf("int main(int argc, char *argv[]) {");
     printf("\n\tint provol2c = provolone2c(atoi(argv[1])");
     for (int i=2; i<qtdParametros+1; i++){
 		printf(", atoi(argv[%d])", i);
