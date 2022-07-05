@@ -1,0 +1,453 @@
+Terminals unused in grammar
+
+    PROGRAM
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: ENTRADA varlist SAIDA ret cmds FIM NEWLINE END
+
+    2 varlist: ID varlist
+    3        | ID
+
+    4 ret: ID
+
+    5 cmds: cmd cmds
+    6     | cmd
+
+    7 cmd: ENQUANTO ID FACA cmds FIM
+    8    | ID ASSIGN ID
+    9    | INC AP ID FP
+   10    | ZERA AP ID FP
+   11    | SE ID ENTAO cmds FIM
+   12    | SE ID ENTAO cmds SENAO cmds FIM
+   13    | FACA ID VEZES cmds FIM
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    ID <str> (258) 2 3 4 7 8 9 10 11 12 13
+    PROGRAM <number> (259)
+    ENTRADA <number> (260) 1
+    SAIDA <number> (261) 1
+    END <number> (262) 1
+    NEWLINE <number> (263) 1
+    ENQUANTO <number> (264) 7
+    FACA <number> (265) 7 13
+    INC <number> (266) 9
+    ZERA <number> (267) 10
+    SE <number> (268) 11 12
+    ENTAO <number> (269) 11 12
+    SENAO <number> (270) 12
+    VEZES <number> (271) 13
+    FIM <number> (272) 1 7 11 12 13
+    ASSIGN <number> (273) 8
+    AP <number> (274) 9 10
+    FP <number> (275) 9 10
+
+
+Nonterminals, with rules where they appear
+
+    $accept (21)
+        on left: 0
+    program <str> (22)
+        on left: 1
+        on right: 0
+    varlist <str> (23)
+        on left: 2 3
+        on right: 1 2
+    ret <str> (24)
+        on left: 4
+        on right: 1
+    cmds <str> (25)
+        on left: 5 6
+        on right: 1 5 7 11 12 13
+    cmd <str> (26)
+        on left: 7 8 9 10 11 12 13
+        on right: 5 6
+
+
+State 0
+
+    0 $accept: . program $end
+
+    ENTRADA  shift, and go to state 1
+
+    program  go to state 2
+
+
+State 1
+
+    1 program: ENTRADA . varlist SAIDA ret cmds FIM NEWLINE END
+
+    ID  shift, and go to state 3
+
+    varlist  go to state 4
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 5
+
+
+State 3
+
+    2 varlist: ID . varlist
+    3        | ID .
+
+    ID  shift, and go to state 3
+
+    $default  reduce using rule 3 (varlist)
+
+    varlist  go to state 6
+
+
+State 4
+
+    1 program: ENTRADA varlist . SAIDA ret cmds FIM NEWLINE END
+
+    SAIDA  shift, and go to state 7
+
+
+State 5
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 6
+
+    2 varlist: ID varlist .
+
+    $default  reduce using rule 2 (varlist)
+
+
+State 7
+
+    1 program: ENTRADA varlist SAIDA . ret cmds FIM NEWLINE END
+
+    ID  shift, and go to state 8
+
+    ret  go to state 9
+
+
+State 8
+
+    4 ret: ID .
+
+    $default  reduce using rule 4 (ret)
+
+
+State 9
+
+    1 program: ENTRADA varlist SAIDA ret . cmds FIM NEWLINE END
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    cmds  go to state 16
+    cmd   go to state 17
+
+
+State 10
+
+    8 cmd: ID . ASSIGN ID
+
+    ASSIGN  shift, and go to state 18
+
+
+State 11
+
+    7 cmd: ENQUANTO . ID FACA cmds FIM
+
+    ID  shift, and go to state 19
+
+
+State 12
+
+   13 cmd: FACA . ID VEZES cmds FIM
+
+    ID  shift, and go to state 20
+
+
+State 13
+
+    9 cmd: INC . AP ID FP
+
+    AP  shift, and go to state 21
+
+
+State 14
+
+   10 cmd: ZERA . AP ID FP
+
+    AP  shift, and go to state 22
+
+
+State 15
+
+   11 cmd: SE . ID ENTAO cmds FIM
+   12    | SE . ID ENTAO cmds SENAO cmds FIM
+
+    ID  shift, and go to state 23
+
+
+State 16
+
+    1 program: ENTRADA varlist SAIDA ret cmds . FIM NEWLINE END
+
+    FIM  shift, and go to state 24
+
+
+State 17
+
+    5 cmds: cmd . cmds
+    6     | cmd .
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    $default  reduce using rule 6 (cmds)
+
+    cmds  go to state 25
+    cmd   go to state 17
+
+
+State 18
+
+    8 cmd: ID ASSIGN . ID
+
+    ID  shift, and go to state 26
+
+
+State 19
+
+    7 cmd: ENQUANTO ID . FACA cmds FIM
+
+    FACA  shift, and go to state 27
+
+
+State 20
+
+   13 cmd: FACA ID . VEZES cmds FIM
+
+    VEZES  shift, and go to state 28
+
+
+State 21
+
+    9 cmd: INC AP . ID FP
+
+    ID  shift, and go to state 29
+
+
+State 22
+
+   10 cmd: ZERA AP . ID FP
+
+    ID  shift, and go to state 30
+
+
+State 23
+
+   11 cmd: SE ID . ENTAO cmds FIM
+   12    | SE ID . ENTAO cmds SENAO cmds FIM
+
+    ENTAO  shift, and go to state 31
+
+
+State 24
+
+    1 program: ENTRADA varlist SAIDA ret cmds FIM . NEWLINE END
+
+    NEWLINE  shift, and go to state 32
+
+
+State 25
+
+    5 cmds: cmd cmds .
+
+    $default  reduce using rule 5 (cmds)
+
+
+State 26
+
+    8 cmd: ID ASSIGN ID .
+
+    $default  reduce using rule 8 (cmd)
+
+
+State 27
+
+    7 cmd: ENQUANTO ID FACA . cmds FIM
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    cmds  go to state 33
+    cmd   go to state 17
+
+
+State 28
+
+   13 cmd: FACA ID VEZES . cmds FIM
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    cmds  go to state 34
+    cmd   go to state 17
+
+
+State 29
+
+    9 cmd: INC AP ID . FP
+
+    FP  shift, and go to state 35
+
+
+State 30
+
+   10 cmd: ZERA AP ID . FP
+
+    FP  shift, and go to state 36
+
+
+State 31
+
+   11 cmd: SE ID ENTAO . cmds FIM
+   12    | SE ID ENTAO . cmds SENAO cmds FIM
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    cmds  go to state 37
+    cmd   go to state 17
+
+
+State 32
+
+    1 program: ENTRADA varlist SAIDA ret cmds FIM NEWLINE . END
+
+    END  shift, and go to state 38
+
+
+State 33
+
+    7 cmd: ENQUANTO ID FACA cmds . FIM
+
+    FIM  shift, and go to state 39
+
+
+State 34
+
+   13 cmd: FACA ID VEZES cmds . FIM
+
+    FIM  shift, and go to state 40
+
+
+State 35
+
+    9 cmd: INC AP ID FP .
+
+    $default  reduce using rule 9 (cmd)
+
+
+State 36
+
+   10 cmd: ZERA AP ID FP .
+
+    $default  reduce using rule 10 (cmd)
+
+
+State 37
+
+   11 cmd: SE ID ENTAO cmds . FIM
+   12    | SE ID ENTAO cmds . SENAO cmds FIM
+
+    SENAO  shift, and go to state 41
+    FIM    shift, and go to state 42
+
+
+State 38
+
+    1 program: ENTRADA varlist SAIDA ret cmds FIM NEWLINE END .
+
+    $default  reduce using rule 1 (program)
+
+
+State 39
+
+    7 cmd: ENQUANTO ID FACA cmds FIM .
+
+    $default  reduce using rule 7 (cmd)
+
+
+State 40
+
+   13 cmd: FACA ID VEZES cmds FIM .
+
+    $default  reduce using rule 13 (cmd)
+
+
+State 41
+
+   12 cmd: SE ID ENTAO cmds SENAO . cmds FIM
+
+    ID        shift, and go to state 10
+    ENQUANTO  shift, and go to state 11
+    FACA      shift, and go to state 12
+    INC       shift, and go to state 13
+    ZERA      shift, and go to state 14
+    SE        shift, and go to state 15
+
+    cmds  go to state 43
+    cmd   go to state 17
+
+
+State 42
+
+   11 cmd: SE ID ENTAO cmds FIM .
+
+    $default  reduce using rule 11 (cmd)
+
+
+State 43
+
+   12 cmd: SE ID ENTAO cmds SENAO cmds . FIM
+
+    FIM  shift, and go to state 44
+
+
+State 44
+
+   12 cmd: SE ID ENTAO cmds SENAO cmds FIM .
+
+    $default  reduce using rule 12 (cmd)
