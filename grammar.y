@@ -48,23 +48,23 @@ void generateProvolone2c(char *params, char *var1, char *var2){
 program : ENTRADA varlist SAIDA ret cmds END NEWLINE            {printf("int provolone2c(%s) {\n\n%s\n%s\n", $2, $5, $4);}
         ;
 
-varlist : ID varlist                                            {char *p1=malloc(strlen($1) + strlen($2) + 7); sprintf(p1, "%s, int %s", $1, $2); $$ = p1; qtdParametros++;}
+varlist : ID varlist                                            {char *p1=malloc(strlen($1) + strlen($2) + 7); sprintf(p1, "int %s, %s", $1, $2); $$ = p1; qtdParametros++;}
         | ID                                                    {char *p2=malloc(strlen($1) + 5); sprintf(p2, "int %s", $1); $$ = p2; qtdParametros++;}
         ;
 
 ret     : ID                                                    {char *returns = malloc(strlen($1) + 14); sprintf(returns,"\treturn %s;\n\n}\n",$1); $$ = returns;}
         ;
 
-cmds    : cmd cmds                                              {char *comandos=malloc(strlen($1) + strlen($2) + 2); sprintf(comandos, "%s\t%s", $1, $2); $$=comandos;}
-        | cmd                                                   {char *comando=malloc(strlen($1) + 2); sprintf(comando, "\t%s", $1); $$=comando;}
+cmds    : cmd cmds                                              {char *cmds1=malloc(strlen($1) + strlen($2) + 2); sprintf(cmds1, "%s %s", $1, $2); $$=cmds1;}
+        | cmd                                                   {char *cmds2=malloc(strlen($1) + 2); sprintf(cmds2, "\t%s", $1); $$=cmds2;}
         ;
 
 cmd     : ENQUANTO ID FACA cmds FIM                             {char *repIndet=malloc(strlen($2) + strlen($4) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", $2, $4); $$ = repIndet;}
-        | ID ASSIGN ID                                          {char *assign=malloc(strlen($1) + strlen($3) + 6); sprintf(assign, "%s = %s;\n",$1,$3); $$ = assign;}
+        | ID ASSIGN ID                                          {char *assign=malloc(strlen($1) + strlen($3) + 6); sprintf(assign, "\t%s = %s;\n",$1,$3); $$ = assign;}
         | INC AP ID FP                                          {char *increment=malloc(strlen($3) + 5); sprintf(increment, "%s++;\n",$3); $$ = increment;}
         | ZERA AP ID FP                                         {char *zerar=malloc(strlen($3) + 7); sprintf(zerar, "%s = 0;\n",$3); $$ = zerar;}
-        | SE ID ENTAO cmds FIM                                  {char *condition1=malloc(strlen($2) + strlen($4) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", $2, $4); $$ = condition1;}
-        | SE ID ENTAO cmds SENAO cmds FIM                       {char *condition2=malloc(strlen($2) + strlen($4) + strlen($6) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", $2, $4, $6); $$ = condition2;}
+        | SE ID ENTAO cmds FIM                                {char *condition1=malloc(strlen($2) + strlen($4) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", $2, $4); $$ = condition1;}
+        | SE ID ENTAO cmds SENAO cmds FIM                     {char *condition2=malloc(strlen($2) + strlen($4) + strlen($6) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", $2, $4, $6); $$ = condition2;}
         | FACA ID VEZES cmds FIM                                {char *repDet=malloc(strlen($2) + strlen($4) + 30); sprintf(repDet, "for (int i=0; i<%s; i++) {\n\t%s\t}\n", $2, $4); $$ = repDet;}
         ;
 

@@ -1377,7 +1377,7 @@ yyreduce:
 
   case 3:
 #line 51 "grammar.y"
-                                                                {char *p1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 7); sprintf(p1, "%s, int %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str) = p1; qtdParametros++;}
+                                                                {char *p1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 7); sprintf(p1, "int %s, %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str) = p1; qtdParametros++;}
 #line 1382 "y.tab.c"
     break;
 
@@ -1395,13 +1395,13 @@ yyreduce:
 
   case 6:
 #line 58 "grammar.y"
-                                                                {char *comandos=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 2); sprintf(comandos, "%s\t%s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str)=comandos;}
+                                                                {char *cmds1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 2); sprintf(cmds1, "%s %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str)=cmds1;}
 #line 1400 "y.tab.c"
     break;
 
   case 7:
 #line 59 "grammar.y"
-                                                                {char *comando=malloc(strlen((yyvsp[0].str)) + 2); sprintf(comando, "\t%s", (yyvsp[0].str)); (yyval.str)=comando;}
+                                                                {char *cmds2=malloc(strlen((yyvsp[0].str)) + 2); sprintf(cmds2, "\t%s", (yyvsp[0].str)); (yyval.str)=cmds2;}
 #line 1406 "y.tab.c"
     break;
 
@@ -1413,7 +1413,7 @@ yyreduce:
 
   case 9:
 #line 63 "grammar.y"
-                                                                {char *assign=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6); sprintf(assign, "%s = %s;\n",(yyvsp[-2].str),(yyvsp[0].str)); (yyval.str) = assign;}
+                                                                {char *assign=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6); sprintf(assign, "\t%s = %s;\n",(yyvsp[-2].str),(yyvsp[0].str)); (yyval.str) = assign;}
 #line 1418 "y.tab.c"
     break;
 
@@ -1431,13 +1431,13 @@ yyreduce:
 
   case 12:
 #line 66 "grammar.y"
-                                                                {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
+                                                              {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
 #line 1436 "y.tab.c"
     break;
 
   case 13:
 #line 67 "grammar.y"
-                                                                {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
+                                                              {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
 #line 1442 "y.tab.c"
     break;
 

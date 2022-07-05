@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-           int provolone2c(int A, int B, int C) {
+            int provolone2c(int X, int Y, int Z) {
 
-	for (int i=0; i<B; i++) {
-		A++;
+	Z = Y;
+ 	while (X) {
+		Z++;
 	}
 
-	return A;
+	return Z;
 
 }
 
