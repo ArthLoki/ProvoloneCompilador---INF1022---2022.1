@@ -64,7 +64,7 @@ cmds    : cmd cmds                                              {char *cmds1=mal
         | cmd                                                   {char *cmds2=malloc(strlen($1) + 2); sprintf(cmds2, "\t%s", $1); $$=cmds2;}
         ;
 
-cmd     : ENQUANTO ID FACA cmds FIM                             {char *repIndet=malloc(strlen($2) + strlen($4) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", $2, $4); $$ = repIndet;}
+cmd     : ENQUANTO cmd FACA cmds FIM                           {char *repIndet=malloc(strlen($2) + strlen($4) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", $2, $4); $$ = repIndet;}
         | ID ASSIGN ID                                          {char *assign=malloc(strlen($1) + strlen($3) + 6); sprintf(assign, "%s = %s;\n",$1,$3); $$ = assign;}
         | INC AP ID FP                                          {char *increment=malloc(strlen($3) + 5); sprintf(increment, "%s++;\n",$3); $$ = increment;}
         | ZERA AP ID FP                                         {char *zerar=malloc(strlen($3) + 7); sprintf(zerar, "%s = 0;\n",$3); $$ = zerar;}

@@ -1,0 +1,10 @@
+Basta copiar e colar em um arquivo para rodar o programa em Provol-One. Não se esquecer de dar um enter depois de END para não dar erro de sintaxe e de colocar a extensão .txt no arquivo.
+
+1. 
+ENTRADA A B C SAIDA A FACA B VEZES INC(A) FIM END
+
+2.
+ENTRADA X Y Z SAIDA Z ENQUANTO X < Y FACA INC(X) INC(Z) FIM END
+
+3.
+ENTRADA X Y SAIDA X SE X==Y ENTAO INC(X) SENAO INC(Y) FIM END
