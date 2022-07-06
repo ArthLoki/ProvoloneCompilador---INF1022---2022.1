@@ -9,11 +9,6 @@ void yyerror(const char *s){
     fprintf(stderr, "%s\n", s);
 };
 
-// create aux functions
-void generateProvolone2c(char *params, char *var1, char *var2){
-    printf("int provolone2c(%s) {\n\n%s\n%s\n", params, var1, var2);
-};
-
 %}
 
 %union {
@@ -86,10 +81,6 @@ cmd     : ENQUANTO ID FACA cmds FIM                             {char *repIndet=
         | ID GREATEROREQUAL ID                                  {char *greaterorequal=malloc(strlen($1) + strlen($3) + 10); sprintf(greaterorequal, "%s >= %s", $1, $3); $$ = greaterorequal;}
         | ID LESSER ID                                          {char *lesser=malloc(strlen($1) + strlen($3) + 10); sprintf(lesser, "%s < %s", $1, $3); $$ = lesser;}
         | ID LESSEROREQUAL ID                                   {char *lesserorequal=malloc(strlen($1) + strlen($3) + 10); sprintf(lesserorequal, "%s <= %s", $1, $3); $$ = lesserorequal;}
-        | PLUS ID                                               {char *plus2=malloc(strlen($2) + 5); sprintf(plus2, "+ %s;", $2); $$ = plus2;}
-        | MINUS ID                                              {char *minus2=malloc(strlen($2) + 5); sprintf(minus2,"- %s;", $2); $$ = minus2;}
-        | MULT ID                                               {char *mult2=malloc(strlen($2) + 5); sprintf(mult2, "* %s;", $2); $$ = mult2;}
-        | DIVIDE ID                                             {char *divide2=malloc(strlen($2) + 5); sprintf(divide2, "/ %s;", $2); $$ = divide2;}
         ;
 
 %%
