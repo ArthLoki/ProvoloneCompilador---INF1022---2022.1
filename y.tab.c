@@ -515,16 +515,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   64
+#define YYLAST   67
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  31
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  6
+#define YYNNTS  7
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  24
+#define YYNRULES  25
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  64
+#define YYNSTATES  66
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   285
@@ -574,9 +574,9 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    53,    53,    56,    57,    60,    63,    64,    67,    68,
-      69,    70,    71,    72,    73,    74,    75,    76,    77,    78,
-      79,    80,    81,    82,    83
+       0,    53,    53,    56,    57,    60,    63,    66,    67,    70,
+      71,    72,    73,    74,    75,    76,    77,    78,    79,    80,
+      81,    82,    83,    84,    85,    86
 };
 #endif
 
@@ -589,7 +589,8 @@ static const char *const yytname[] =
   "END", "NEWLINE", "ENQUANTO", "FACA", "INC", "ZERA", "SE", "ENTAO",
   "SENAO", "VEZES", "FIM", "ASSIGN", "AP", "FP", "EQUALS", "DIF", "PLUS",
   "MINUS", "MULT", "DIVIDE", "GREATER", "GREATEROREQUAL", "LESSER",
-  "LESSEROREQUAL", "$accept", "program", "varlist", "ret", "cmds", "cmd", YY_NULLPTR
+  "LESSEROREQUAL", "$accept", "program", "varlist", "var", "ret", "cmds",
+  "cmd", YY_NULLPTR
 };
 #endif
 
@@ -621,11 +622,11 @@ static const yytype_int8 yypact[] =
 {
       -2,    13,    18,    13,    19,   -18,   -18,    16,   -18,    11,
      -17,    11,    23,     8,     9,    11,    22,    11,    27,    28,
-      31,    32,    34,    35,    36,    37,    38,    39,    40,    41,
-      30,    44,    45,    42,    46,   -18,   -18,   -18,   -18,   -18,
-     -18,   -18,   -18,   -18,   -18,   -18,   -18,    11,    11,    24,
-      29,    11,   -18,    33,    43,   -18,   -18,     0,   -18,   -18,
-      11,   -18,    47,   -18
+      29,    31,    32,    33,    35,    36,    38,    39,    40,    34,
+     -18,    42,    44,    45,    37,    41,   -18,   -18,   -18,   -18,
+     -18,   -18,   -18,   -18,   -18,   -18,   -18,   -18,    11,    43,
+      30,    46,    11,   -18,    47,    11,   -18,   -18,     0,   -18,
+      48,    11,   -18,   -18,    50,   -18
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -633,25 +634,25 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     4,     0,     1,     3,     0,     5,     0,
-       0,     0,     0,     0,     0,     0,     0,     7,     0,     0,
+       0,     0,     0,     4,     0,     1,     3,     0,     6,     0,
+       0,     0,     0,     0,     0,     0,     0,     8,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     6,     9,    15,    16,    17,
-      18,    19,    20,    21,    22,    23,    24,     0,     0,     0,
-       0,     0,     2,     0,     0,    10,    11,     0,     8,    14,
-       0,    12,     0,    13
+       5,     0,     0,     0,     0,     0,     7,    10,    16,    17,
+      18,    19,    20,    21,    22,    23,    24,    25,     0,     0,
+       0,     0,     0,     2,     0,     0,    11,    12,     0,     9,
+       0,     0,    13,    15,     0,    14
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -18,   -18,    49,   -18,   -15,    48
+     -18,   -18,    49,   -18,   -18,   -15,    51
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     4,     9,    16,    17
+      -1,     2,     4,    31,     9,    16,    17
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -659,13 +660,13 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      33,    18,    35,     1,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    10,    60,     3,    61,     5,     8,
-      11,    12,    13,    14,    15,     7,    30,    31,    32,    34,
-      36,    37,    53,    54,    38,    39,    57,    40,    41,    42,
-      43,    44,    45,    46,    55,    62,    48,    49,    50,    56,
-      58,    47,     6,     0,    52,     0,    51,     0,     0,    29,
-      59,     0,     0,     0,    63
+      34,    18,    36,     1,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    10,    61,     3,    62,     5,     8,
+      11,    12,    13,    14,    15,     7,    30,    32,    33,    35,
+      37,    38,    39,    54,    40,    41,    42,    58,    43,    44,
+      60,    45,    46,    47,    48,    49,    64,    50,    51,    53,
+      56,    52,     6,     0,     0,     0,     0,     0,     0,    55,
+       0,     0,    29,     0,    59,    63,    57,    65
 };
 
 static const yytype_int8 yycheck[] =
@@ -673,39 +674,39 @@ static const yytype_int8 yycheck[] =
       15,    18,    17,     5,    21,    22,    23,    24,    25,    26,
       27,    28,    29,    30,     3,    15,     3,    17,     0,     3,
        9,    10,    11,    12,    13,     6,     3,    19,    19,     7,
-       3,     3,    47,    48,     3,     3,    51,     3,     3,     3,
-       3,     3,     3,     3,    20,    60,    16,     3,     3,    20,
-      17,    10,     3,    -1,     8,    -1,    14,    -1,    -1,    11,
-      17,    -1,    -1,    -1,    17
+       3,     3,     3,    48,     3,     3,     3,    52,     3,     3,
+      55,     3,     3,     3,    10,     3,    61,     3,     3,     8,
+      20,    14,     3,    -1,    -1,    -1,    -1,    -1,    -1,    16,
+      -1,    -1,    11,    -1,    17,    17,    20,    17
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     5,    32,     3,    33,     0,    33,     6,     3,    34,
-       3,     9,    10,    11,    12,    13,    35,    36,    18,    21,
-      22,    23,    24,    25,    26,    27,    28,    29,    30,    36,
-       3,    19,    19,    35,     7,    35,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,    10,    16,     3,
-       3,    14,     8,    35,    35,    20,    20,    35,    17,    17,
-      15,    17,    35,    17
+       0,     5,    32,     3,    33,     0,    33,     6,     3,    35,
+       3,     9,    10,    11,    12,    13,    36,    37,    18,    21,
+      22,    23,    24,    25,    26,    27,    28,    29,    30,    37,
+       3,    34,    19,    19,    36,     7,    36,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,    10,     3,
+       3,     3,    14,     8,    36,    16,    20,    20,    36,    17,
+      36,    15,    17,    17,    36,    17
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    31,    32,    33,    33,    34,    35,    35,    36,    36,
-      36,    36,    36,    36,    36,    36,    36,    36,    36,    36,
-      36,    36,    36,    36,    36
+       0,    31,    32,    33,    33,    34,    35,    36,    36,    37,
+      37,    37,    37,    37,    37,    37,    37,    37,    37,    37,
+      37,    37,    37,    37,    37,    37
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     7,     2,     1,     1,     2,     1,     5,     3,
-       4,     4,     5,     7,     5,     3,     3,     3,     3,     3,
-       3,     3,     3,     3,     3
+       0,     2,     7,     2,     1,     1,     1,     2,     1,     5,
+       3,     4,     4,     5,     7,     6,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3
 };
 
 
@@ -1403,143 +1404,149 @@ yyreduce:
   case 2:
 #line 53 "grammar.y"
                                                                 {printf("int provolone2c(%s) {\n\n%s\n%s\n", (yyvsp[-5].str), (yyvsp[-2].str), (yyvsp[-3].str));}
-#line 1407 "y.tab.c"
+#line 1408 "y.tab.c"
     break;
 
   case 3:
 #line 56 "grammar.y"
                                                                 {char *p1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 7); sprintf(p1, "int %s, %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str) = p1; qtdParametros++;}
-#line 1413 "y.tab.c"
+#line 1414 "y.tab.c"
     break;
 
   case 4:
 #line 57 "grammar.y"
                                                                 {char *p2=malloc(strlen((yyvsp[0].str)) + 5); sprintf(p2, "int %s", (yyvsp[0].str)); (yyval.str) = p2; qtdParametros++;}
-#line 1419 "y.tab.c"
+#line 1420 "y.tab.c"
     break;
 
   case 5:
 #line 60 "grammar.y"
-                                                                {char *returns = malloc(strlen((yyvsp[0].str)) + 14); sprintf(returns,"\treturn %s;\n\n}\n",(yyvsp[0].str)); (yyval.str) = returns;}
-#line 1425 "y.tab.c"
+                                                                {char *p3=malloc(strlen((yyvsp[0].str)) + 5); sprintf(p3, "%s", (yyvsp[0].str)); (yyval.str) = p3;}
+#line 1426 "y.tab.c"
     break;
 
   case 6:
 #line 63 "grammar.y"
-                                                                {char *cmds1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 2); sprintf(cmds1, "\t%s %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str)=cmds1;}
-#line 1431 "y.tab.c"
+                                                                {char *returns = malloc(strlen((yyvsp[0].str)) + 14); sprintf(returns,"\treturn %s;\n\n}\n",(yyvsp[0].str)); (yyval.str) = returns;}
+#line 1432 "y.tab.c"
     break;
 
   case 7:
-#line 64 "grammar.y"
-                                                                {char *cmds2=malloc(strlen((yyvsp[0].str)) + 2); sprintf(cmds2, "\t%s", (yyvsp[0].str)); (yyval.str)=cmds2;}
-#line 1437 "y.tab.c"
+#line 66 "grammar.y"
+                                                                {char *cmds1=malloc(strlen((yyvsp[-1].str)) + strlen((yyvsp[0].str)) + 2); sprintf(cmds1, "\t%s %s", (yyvsp[-1].str), (yyvsp[0].str)); (yyval.str)=cmds1;}
+#line 1438 "y.tab.c"
     break;
 
   case 8:
 #line 67 "grammar.y"
-                                                               {char *repIndet=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = repIndet;}
-#line 1443 "y.tab.c"
+                                                                {char *cmds2=malloc(strlen((yyvsp[0].str)) + 2); sprintf(cmds2, "\t%s", (yyvsp[0].str)); (yyval.str)=cmds2;}
+#line 1444 "y.tab.c"
     break;
 
   case 9:
-#line 68 "grammar.y"
-                                                                {char *assign=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6); sprintf(assign, "%s = %s;\n",(yyvsp[-2].str),(yyvsp[0].str)); (yyval.str) = assign;}
-#line 1449 "y.tab.c"
+#line 70 "grammar.y"
+                                                                {char *repIndet=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = repIndet;}
+#line 1450 "y.tab.c"
     break;
 
   case 10:
-#line 69 "grammar.y"
-                                                                {char *increment=malloc(strlen((yyvsp[-1].str)) + 5); sprintf(increment, "%s++;\n",(yyvsp[-1].str)); (yyval.str) = increment;}
-#line 1455 "y.tab.c"
+#line 71 "grammar.y"
+                                                                {char *assign=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 6); sprintf(assign, "%s = %s;\n",(yyvsp[-2].str),(yyvsp[0].str)); (yyval.str) = assign;}
+#line 1456 "y.tab.c"
     break;
 
   case 11:
-#line 70 "grammar.y"
-                                                                {char *zerar=malloc(strlen((yyvsp[-1].str)) + 7); sprintf(zerar, "%s = 0;\n",(yyvsp[-1].str)); (yyval.str) = zerar;}
-#line 1461 "y.tab.c"
+#line 72 "grammar.y"
+                                                                {char *increment=malloc(strlen((yyvsp[-1].str)) + 5); sprintf(increment, "%s++;\n",(yyvsp[-1].str)); (yyval.str) = increment;}
+#line 1462 "y.tab.c"
     break;
 
   case 12:
-#line 71 "grammar.y"
-                                                                {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
-#line 1467 "y.tab.c"
+#line 73 "grammar.y"
+                                                                {char *zerar=malloc(strlen((yyvsp[-1].str)) + 7); sprintf(zerar, "%s = 0;\n",(yyvsp[-1].str)); (yyval.str) = zerar;}
+#line 1468 "y.tab.c"
     break;
 
   case 13:
-#line 72 "grammar.y"
-                                                                {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
-#line 1473 "y.tab.c"
+#line 74 "grammar.y"
+                                                                {char *condition1=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition1;}
+#line 1474 "y.tab.c"
     break;
 
   case 14:
-#line 73 "grammar.y"
-                                                                {char *repDet=malloc(strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 30); sprintf(repDet, "for (int i=0; i<%s; i++) {\n\t%s\t}\n", (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = repDet;}
-#line 1479 "y.tab.c"
+#line 75 "grammar.y"
+                                                                {char *condition2=malloc(strlen((yyvsp[-5].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str)); (yyval.str) = condition2;}
+#line 1480 "y.tab.c"
     break;
 
   case 15:
-#line 74 "grammar.y"
-                                                                {char *equals=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(equals, "%s == %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = equals;}
-#line 1485 "y.tab.c"
+#line 76 "grammar.y"
+                                                                {char *repDet=malloc(strlen((yyvsp[-4].str)) + strlen((yyvsp[-3].str)) + strlen((yyvsp[-1].str)) + 30); sprintf(repDet, "for (int %s=0; %s<%s; %s++) {\n\t%s\t}\n", (yyvsp[-4].str), (yyvsp[-4].str), (yyvsp[-3].str), (yyvsp[-4].str), (yyvsp[-1].str)); (yyval.str) = repDet;}
+#line 1486 "y.tab.c"
     break;
 
   case 16:
-#line 75 "grammar.y"
-                                                                {char *dif=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(dif, "%s != %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = dif;}
-#line 1491 "y.tab.c"
+#line 77 "grammar.y"
+                                                                {char *equals=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(equals, "%s == %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = equals;}
+#line 1492 "y.tab.c"
     break;
 
   case 17:
-#line 76 "grammar.y"
-                                                                {char *plus=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(plus, "%s + %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = plus;}
-#line 1497 "y.tab.c"
+#line 78 "grammar.y"
+                                                                {char *dif=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(dif, "%s != %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = dif;}
+#line 1498 "y.tab.c"
     break;
 
   case 18:
-#line 77 "grammar.y"
-                                                                {char *minus=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(minus, "%s - %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = minus;}
-#line 1503 "y.tab.c"
+#line 79 "grammar.y"
+                                                                {char *plus=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(plus, "%s + %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = plus;}
+#line 1504 "y.tab.c"
     break;
 
   case 19:
-#line 78 "grammar.y"
-                                                                {char *mult=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(mult, "%s * %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = mult;}
-#line 1509 "y.tab.c"
+#line 80 "grammar.y"
+                                                                {char *minus=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(minus, "%s - %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = minus;}
+#line 1510 "y.tab.c"
     break;
 
   case 20:
-#line 79 "grammar.y"
-                                                                {char *divide=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(divide, "%s / %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = divide;}
-#line 1515 "y.tab.c"
+#line 81 "grammar.y"
+                                                                {char *mult=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(mult, "%s * %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = mult;}
+#line 1516 "y.tab.c"
     break;
 
   case 21:
-#line 80 "grammar.y"
-                                                                {char *greater=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(greater, "%s > %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = greater;}
-#line 1521 "y.tab.c"
+#line 82 "grammar.y"
+                                                                {char *divide=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(divide, "%s / %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = divide;}
+#line 1522 "y.tab.c"
     break;
 
   case 22:
-#line 81 "grammar.y"
-                                                                {char *greaterorequal=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(greaterorequal, "%s >= %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = greaterorequal;}
-#line 1527 "y.tab.c"
+#line 83 "grammar.y"
+                                                                {char *greater=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(greater, "%s > %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = greater;}
+#line 1528 "y.tab.c"
     break;
 
   case 23:
-#line 82 "grammar.y"
-                                                                {char *lesser=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(lesser, "%s < %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = lesser;}
-#line 1533 "y.tab.c"
+#line 84 "grammar.y"
+                                                                {char *greaterorequal=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(greaterorequal, "%s >= %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = greaterorequal;}
+#line 1534 "y.tab.c"
     break;
 
   case 24:
-#line 83 "grammar.y"
+#line 85 "grammar.y"
+                                                                {char *lesser=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(lesser, "%s < %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = lesser;}
+#line 1540 "y.tab.c"
+    break;
+
+  case 25:
+#line 86 "grammar.y"
                                                                 {char *lesserorequal=malloc(strlen((yyvsp[-2].str)) + strlen((yyvsp[0].str)) + 10); sprintf(lesserorequal, "%s <= %s", (yyvsp[-2].str), (yyvsp[0].str)); (yyval.str) = lesserorequal;}
-#line 1539 "y.tab.c"
+#line 1546 "y.tab.c"
     break;
 
 
-#line 1543 "y.tab.c"
+#line 1550 "y.tab.c"
 
       default: break;
     }
@@ -1771,7 +1778,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 86 "grammar.y"
+#line 89 "grammar.y"
 
 
 int main(){

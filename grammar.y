@@ -16,7 +16,7 @@ void yyerror(const char *s){
     int number;
 };
 
-%type <str> varlist cmds cmd program ret;
+%type <str> varlist cmds cmd program ret var;
 %token<str> ID;
 %token<number> PROGRAM;
 %token<number> ENTRADA;
@@ -57,6 +57,9 @@ varlist : ID varlist                                            {char *p1=malloc
         | ID                                                    {char *p2=malloc(strlen($1) + 5); sprintf(p2, "int %s", $1); $$ = p2; qtdParametros++;}
         ;
 
+var     : ID                                                    {char *p3=malloc(strlen($1) + 5); sprintf(p3, "%s", $1); $$ = p3;}
+        ;
+
 ret     : ID                                                    {char *returns = malloc(strlen($1) + 14); sprintf(returns,"\treturn %s;\n\n}\n",$1); $$ = returns;}
         ;
 
@@ -64,13 +67,13 @@ cmds    : cmd cmds                                              {char *cmds1=mal
         | cmd                                                   {char *cmds2=malloc(strlen($1) + 2); sprintf(cmds2, "\t%s", $1); $$=cmds2;}
         ;
 
-cmd     : ENQUANTO cmd FACA cmds FIM                           {char *repIndet=malloc(strlen($2) + strlen($4) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", $2, $4); $$ = repIndet;}
+cmd     : ENQUANTO cmd FACA cmds FIM                            {char *repIndet=malloc(strlen($2) + strlen($4) + 16); sprintf(repIndet, "while (%s) {\n\t%s\t}\n", $2, $4); $$ = repIndet;}
         | ID ASSIGN ID                                          {char *assign=malloc(strlen($1) + strlen($3) + 6); sprintf(assign, "%s = %s;\n",$1,$3); $$ = assign;}
         | INC AP ID FP                                          {char *increment=malloc(strlen($3) + 5); sprintf(increment, "%s++;\n",$3); $$ = increment;}
         | ZERA AP ID FP                                         {char *zerar=malloc(strlen($3) + 7); sprintf(zerar, "%s = 0;\n",$3); $$ = zerar;}
         | SE cmds ENTAO cmds FIM                                {char *condition1=malloc(strlen($2) + strlen($4) + 13); sprintf(condition1, "if (%s) {\n\t%s\t}\n", $2, $4); $$ = condition1;}
         | SE cmds ENTAO cmds SENAO cmds FIM                     {char *condition2=malloc(strlen($2) + strlen($4) + strlen($6) + 24); sprintf(condition2, "if (%s) {\n\t%s\t}\n\telse{\n\t%s\t}\n", $2, $4, $6); $$ = condition2;}
-        | FACA ID VEZES cmds FIM                                {char *repDet=malloc(strlen($2) + strlen($4) + 30); sprintf(repDet, "for (int i=0; i<%s; i++) {\n\t%s\t}\n", $2, $4); $$ = repDet;}
+        | FACA var ID VEZES cmds FIM                            {char *repDet=malloc(strlen($2) + strlen($3) + strlen($5) + 30); sprintf(repDet, "for (int %s=0; %s<%s; %s++) {\n\t%s\t}\n", $2, $2, $3, $2, $5); $$ = repDet;}
         | ID EQUALS ID                                          {char *equals=malloc(strlen($1) + strlen($3) + 10); sprintf(equals, "%s == %s", $1, $3); $$ = equals;}
         | ID DIF ID                                             {char *dif=malloc(strlen($1) + strlen($3) + 10); sprintf(dif, "%s != %s", $1, $3); $$ = dif;}
         | ID PLUS ID                                            {char *plus=malloc(strlen($1) + strlen($3) + 10); sprintf(plus, "%s + %s", $1, $3); $$ = plus;}
